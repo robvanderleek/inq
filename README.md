@@ -12,8 +12,6 @@
 
 </div>
 
-<div align="center">
-
 Use `inq` for prompts in your shell commands/scripts.
 
 For example, to show a checkbox:
