@@ -17,9 +17,20 @@ Changelog = "https://github.com/robvanderleek/inq/blob/master/CHANGELOG.md"
 Documentation = "https://robvanderleek.github.io/inquirer-textual/"
 Source = "https://github.com/robvanderleek/inq"
 
+[dependency-groups]
+dev = [
+    "poethepoet>=0.39.0",
+    "pyinstaller>=6.17.0",
+    "pytest>=9.0.2",
+]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.poe.tasks.bundle]
+help = "Create a binary executable using pyinstaller"
+cmd = "pyinstaller --workpath .build --clean --noconfirm --specpath dist -n inq -F inq/__main__.py"
 
 [tool.semantic_release]
 branch = "main"

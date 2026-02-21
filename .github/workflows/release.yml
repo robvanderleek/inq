@@ -83,3 +83,55 @@ jobs:
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+
+  release_binaries:
+    name: Release binaries
+    needs:
+      - release
+      - update_repo
+      - release_pypi
+    defaults:
+      run:
+        shell: bash
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            TARGET: macos
+            CMD_BUILD: |
+              uv run pyinstaller -n inq -F inq/__main__.py
+              mv dist/inq dist/inq-macos
+            OUT_FILE_NAME: dist/inq-macos
+          - os: windows-latest
+            TARGET: windows
+            CMD_BUILD: |
+              uv run pyinstaller -n inq --onefile -c inq/__main__.py
+            OUT_FILE_NAME: dist/inq.exe
+          - os: ubuntu-22.04
+            TARGET: linux
+            CMD_BUILD: |
+              uv run pyinstaller -n inq -F inq/__main__.py
+              mv dist/inq dist/inq-linux
+            OUT_FILE_NAME: dist/inq-linux
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v6
+      with:
+        ref: main
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v7
+
+    - name: Install dependencies
+      run: uv sync --locked --dev
+
+    - name: Build with pyinstaller for ${{matrix.TARGET}}
+      run: ${{matrix.CMD_BUILD}}
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ format('v{0}', needs.release.outputs.version) }}
+        files: |
+          ${{ matrix.OUT_FILE_NAME }}
