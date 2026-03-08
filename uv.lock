@@ -81,14 +81,14 @@ dev = [
 
 [[package]]
 name = "inquirer-textual"
-version = "0.4.0"
+version = "0.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "textual" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/68/a5/d3f0d89a16bb200cd42b4417f3bd0820756c510856c0c364a5deee677be5/inquirer_textual-0.4.0.tar.gz", hash = "sha256:5b472299d0b53998c2b2099822b6407ee27691a8992849cdb9c55eac5591e358", size = 1295936, upload-time = "2026-02-03T09:20:09.588Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/cc/866d5b6c4e7e1427cf96e755dc8c1cd05229dfbf39b17fefdc3af1f3d4ae/inquirer_textual-0.5.0.tar.gz", hash = "sha256:4c3f57c96c242629e11b7883027f7a2f32f2d6753060750323bac0a0988f17e8", size = 3258500, upload-time = "2026-03-07T12:06:38.767Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f0/f8/a929cf8dfa1bbcd925dc6aa77dad407831b63fe84c40eaab4b605d83189e/inquirer_textual-0.4.0-py3-none-any.whl", hash = "sha256:d44c4fc4195795a4970c2ae87966c375aa228b4405e7c97e54d6229b9d22ef4e", size = 22450, upload-time = "2026-02-03T09:20:06.929Z" },
+    { url = "https://files.pythonhosted.org/packages/f2/89/b55348ca1604f0733bf3d2d857e3f1d65add6ccd2db769c1e22d8b010d34/inquirer_textual-0.5.0-py3-none-any.whl", hash = "sha256:beda8c4a320af46b7d1c0f6773d972d677796671b16fa831fec02a10f3303939", size = 31460, upload-time = "2026-03-07T12:06:37.147Z" },
 ]
 
 [[package]]
