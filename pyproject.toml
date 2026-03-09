@@ -3,9 +3,9 @@ name = "inq"
 version = "0.2.1"
 description = "CLI for user input"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.13,<3.15"
 dependencies = [
-    "inquirer-textual>=0.4.0",
+    "inquirer-textual==0.5.0",
     "typer>=0.21.1",
 ]
 
