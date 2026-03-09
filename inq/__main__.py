@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 import typer
 from inquirer_textual import prompts
@@ -11,7 +11,8 @@ cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
 @cli.command(help='Multiple selections from a list of choices')
 def checkbox(message: Annotated[str, typer.Option("-m", help='The prompt message to display')] = 'Select options:',
-             choices: Annotated[list[str], typer.Option("-c", help='A list of choices to present to the user')] = None):
+             choices: Annotated[
+                 Optional[list[str]], typer.Option("-c", help='A list of choices to present to the user')] = None):
     choices = choices_wrapper(choices)
     answer = prompts.checkbox(message, choices, settings=PromptSettings(clear=True))
     for item in answer.value:
@@ -31,7 +32,8 @@ def confirm(message: Annotated[str, typer.Option("-m", help='The prompt message 
 
 @cli.command(help='Select from a list of choices with fuzzy filtering')
 def fuzzy(message: Annotated[str, typer.Option("-m", help='The prompt message to display')] = 'Select an option:',
-          choices: Annotated[list[str], typer.Option("-c", help='A list of choices to present to the user')] = None):
+          choices: Annotated[
+              Optional[list[str]], typer.Option("-c", help='A list of choices to present to the user')] = None):
     choices = choices_wrapper(choices)
     answer = prompts.fuzzy(message, choices, settings=PromptSettings(clear=True))
     print(answer)
@@ -51,7 +53,8 @@ def path(message: Annotated[str, typer.Option("-m", help='The prompt message to 
 
 @cli.command(help='Select from a list of choices with pattern filtering')
 def pattern(message: Annotated[str, typer.Option("-m", help='The prompt message to display')] = 'Select an option:',
-            choices: Annotated[list[str], typer.Option("-c", help='A list of choices to present to the user')] = None):
+            choices: Annotated[
+                Optional[list[str]], typer.Option("-c", help='A list of choices to present to the user')] = None):
     choices = choices_wrapper(choices)
     answer = prompts.pattern(message, choices, settings=PromptSettings(clear=True))
     print(answer)
@@ -65,7 +68,8 @@ def secret(message: Annotated[str, typer.Option("-m", help='The prompt message t
 
 @cli.command(help='Select from a list of choices')
 def select(message: Annotated[str, typer.Option("-m", help='The prompt message to display')] = 'Select an option:',
-           choices: Annotated[list[str], typer.Option("-c", help='A list of choices to present to the user')] = None):
+           choices: Annotated[
+               Optional[list[str]], typer.Option("-c", help='A list of choices to present to the user')] = None):
     choices = choices_wrapper(choices)
     answer = prompts.select(message, choices, settings=PromptSettings(clear=True))
     print(answer)
